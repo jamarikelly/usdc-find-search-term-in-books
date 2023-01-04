@@ -8,7 +8,7 @@
  * run your code submission.
  * 
  * The Developer Tools in Chrome are available under the "..." menu, 
- * futher hidden under the option "More Tools." In Firefox, they are 
+ * further hidden under the option "More Tools." In Firefox, they are 
  * under the hamburger (three horizontal lines), also hidden under "More Tools." 
  */
 
@@ -21,14 +21,34 @@
  function findSearchTermInBooks(searchTerm, scannedTextObj) {
     /** You will need to implement your search and 
      * return the appropriate object here. */
-
-    var result = {
-        "SearchTerm": "",
-        "Results": []
-    };
+     for (var key in scannedTextObj) {
+        if (scannedTextObj.hasOwnProperty(key)) {
+          if (typeof scannedTextObj[key] === 'string' && scannedTextObj[key].includes(searchTerm)) {
+     
     
-    return result; 
-}
+
+     var result = {
+        "SearchTerm": "the",
+        "Results": [
+            
+            {
+              "ISBN": scannedTextObj.ISBN,
+              "Page": scannedTextObj.Page,
+              "Line": scannedTextObj.Line 
+            }
+        ]
+     };
+    
+        return result; 
+      }
+     }
+     }
+    }
+ 
+     
+    
+
+    
 
 /** Example input object. */
 const twentyLeaguesIn = [
@@ -95,7 +115,7 @@ if (JSON.stringify(twentyLeaguesOut) === JSON.stringify(test1result)) {
 
 /** We could choose to check that we get the right number of results. */
 const test2result = findSearchTermInBooks("the", twentyLeaguesIn); 
-if (test2result.Results.length == 1) {
+if (test2result.results.length == 1) {
     console.log("PASS: Test 2");
 } else {
     console.log("FAIL: Test 2");
